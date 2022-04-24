@@ -1,6 +1,5 @@
 import {
   Entity,
-  OneToOne,
   JoinColumn,
   Column,
   CreateDateColumn,
@@ -8,8 +7,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
 } from 'typeorm';
-import { CartEntity } from 'src/cart/cart.entity';
-import { OrderEntity } from 'src/order/order.entity';
+import { WidgetEntity } from 'src/widget/widget.entity';
 
 @Entity()
 export class Users {
@@ -23,16 +21,12 @@ export class Users {
   password: string;
 
   @CreateDateColumn()
-  createdAt: String;
+  createdAt: string;
 
   @UpdateDateColumn()
-  updtedAt: String;
+  updtedAt: string;
 
-  @OneToMany((type) => CartEntity, (cart) => cart.id)
+  @OneToMany(() => WidgetEntity, (widget) => widget.id)
   @JoinColumn()
-  cart: CartEntity[];
-
-  @OneToOne((type) => OrderEntity, (order) => order.id)
-  @JoinColumn()
-  order: OrderEntity;
+  widget: WidgetEntity[];
 }

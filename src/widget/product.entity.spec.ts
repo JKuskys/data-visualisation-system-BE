@@ -1,4 +1,4 @@
-import { ProductEntity } from './product.entity';
+import { ProductEntity } from './widget.entity';
 
 describe('ProductEntity', () => {
   it('should be defined', () => {
