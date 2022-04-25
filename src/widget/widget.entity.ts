@@ -11,7 +11,7 @@ export class WidgetEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: number;
 
-  @Column()
+  @Column({ unique: true })
   key: string;
 
   @Column()
@@ -26,20 +26,20 @@ export class WidgetEntity {
   @Column()
   method: string;
 
-  @Column()
-  customAttribute?: string;
+  @Column({ nullable: true })
+  customAttribute: string;
 
-  @Column()
-  customValue?: string;
+  @Column({ nullable: true })
+  customValue: string;
 
-  @Column()
-  customLabel?: string;
+  @Column({ nullable: true })
+  customLabel: string;
 
-  @Column()
-  customMin?: number;
+  @Column({ nullable: true })
+  customMin: number;
 
-  @Column()
-  customMax?: number;
+  @Column({ nullable: true })
+  customMax: number;
 
   // @Column()
   // headers: { [key: string]: string }[];
