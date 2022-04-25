@@ -49,6 +49,10 @@ export class WidgetService {
     return await this.mapResponse(mappedHttpResponse, min, max, errors);
   }
 
+  async getAllPrivate(author: string): Promise<WidgetEntity[]> {
+    return await this.widgetRepository.findBy({ author });
+  }
+
   async getAll(): Promise<WidgetEntity[]> {
     return await this.widgetRepository.find();
   }

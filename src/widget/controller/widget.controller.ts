@@ -66,6 +66,13 @@ export class WidgetController {
     });
   }
 
+  @Get('private/:author')
+  async GetAllPrivate(@Param() author: { author: string }): Promise<string[]> {
+    return (await this.widgetService.getAllPrivate(author.author)).map(
+      (data) => data.key,
+    );
+  }
+
   @Get()
   async GetAll(): Promise<WidgetEntity[]> {
     return await this.widgetService.getAll();
@@ -77,8 +84,9 @@ export class WidgetController {
   }
 
   @Get(':key')
-  async GetOne(@Param() key: string): Promise<WidgetEntity> {
-    return await this.widgetService.getOne(key);
+  async GetOne(@Param() key: { key: string }): Promise<WidgetEntity> {
+    console.log(key);
+    return await this.widgetService.getOne(key.key);
   }
 
   @UseGuards(JwtAuthGuard)

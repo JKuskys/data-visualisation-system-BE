@@ -41,6 +41,9 @@ export class WidgetEntity {
   @Column({ nullable: true })
   customMax: number;
 
+  @Column({ nullable: true })
+  author: string;
+
   // @Column()
   // headers: { [key: string]: string }[];
 
