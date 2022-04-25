@@ -17,7 +17,7 @@ import { WidgetService } from '../service/widget/widget.service';
 export class WidgetController {
   constructor(private widgetService: WidgetService) {}
 
-  @Get('/data')
+  @Post('/data')
   async GetWidgetData(@Body() widget: WidgetEntity) {
     return await this.widgetService.getWidgetData(widget);
   }
@@ -59,8 +59,8 @@ export class WidgetController {
       data: {
         data: [
           { labelsmh: 'label1', value2: 20 },
-          { label: 'label2', value: 45 },
-          { label5: 'label3', value: 60 },
+          { label: 'label2', value: 'asd' },
+          { label: 'label3', value: 60 },
         ],
       },
     });
