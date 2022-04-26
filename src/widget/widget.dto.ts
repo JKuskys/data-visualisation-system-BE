@@ -1,4 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class WidgetDto {
   @IsString()
@@ -19,18 +19,23 @@ export class WidgetDto {
   @IsNotEmpty()
   method: string;
 
-  @IsString()
+  @IsOptional()
+  @IsString({})
   customAttribute: string;
 
+  @IsOptional()
   @IsString()
   customValue: string;
 
+  @IsOptional()
   @IsString()
   customLabel: string;
 
+  @IsOptional()
   @IsNumber()
   customMin: number;
 
+  @IsOptional()
   @IsNumber()
   customMax: number;
 
