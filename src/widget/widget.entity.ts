@@ -14,7 +14,7 @@ export class WidgetEntity {
   @Column({ unique: true })
   key: string;
 
-  @Column()
+  @Column({})
   isPublic: boolean;
 
   @Column()

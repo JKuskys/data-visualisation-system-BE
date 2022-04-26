@@ -12,13 +12,14 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UpdateResult, DeleteResult } from 'typeorm';
 import { WidgetEntity } from '../widget.entity';
 import { WidgetService } from '../service/widget/widget.service';
+import { WidgetDto } from '../widget.dto';
 
 @Controller('api/v1/widgets')
 export class WidgetController {
   constructor(private widgetService: WidgetService) {}
 
   @Post('/data')
-  async GetWidgetData(@Body() widget: WidgetEntity) {
+  async GetWidgetData(@Body() widget: WidgetDto) {
     return await this.widgetService.getWidgetData(widget);
   }
 
@@ -79,7 +80,7 @@ export class WidgetController {
   }
 
   @Post()
-  async Create(@Body() widget: WidgetEntity): Promise<WidgetEntity> {
+  async Create(@Body() widget: WidgetDto): Promise<WidgetEntity> {
     return await this.widgetService.create(widget);
   }
 
@@ -93,7 +94,7 @@ export class WidgetController {
   @Put(':id')
   async Update(
     @Param() id: number,
-    @Body() widget: WidgetEntity,
+    @Body() widget: WidgetDto,
   ): Promise<UpdateResult> {
     return await this.widgetService.update(id, widget);
   }

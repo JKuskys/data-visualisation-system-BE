@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { WidgetEntity } from 'src/widget/widget.entity';
 import { AxiosResponse } from 'axios';
 import { combineLatest, lastValueFrom, map, Observable } from 'rxjs';
+import { WidgetDto } from 'src/widget/widget.dto';
 
 @Injectable()
 export class WidgetService {
@@ -14,7 +15,7 @@ export class WidgetService {
     private httpService: HttpService,
   ) {}
 
-  async getWidgetData(widget: WidgetEntity) {
+  async getWidgetData(widget: WidgetDto) {
     let httpResponse: Observable<AxiosResponse>;
     let mappedHttpResponse: Observable<
       { label: string; value: number | any }[]
@@ -57,7 +58,7 @@ export class WidgetService {
     return await this.widgetRepository.find();
   }
 
-  async create(widget: WidgetEntity): Promise<WidgetEntity> {
+  async create(widget: WidgetDto): Promise<WidgetEntity> {
     return await this.widgetRepository.save(widget);
   }
 
@@ -67,7 +68,7 @@ export class WidgetService {
     });
   }
 
-  async update(id: number, product: WidgetEntity): Promise<UpdateResult> {
+  async update(id: number, product: WidgetDto): Promise<UpdateResult> {
     return await this.widgetRepository.update(id, product);
   }
 
