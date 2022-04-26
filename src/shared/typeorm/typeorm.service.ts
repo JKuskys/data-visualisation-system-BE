@@ -21,6 +21,8 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       logger: 'file',
       ssl: this.config.get<boolean>('SSL'),
       extra: { ssl: { rejectUnauthorized: false } },
+
+      synchronize: true,
     };
   }
 }
