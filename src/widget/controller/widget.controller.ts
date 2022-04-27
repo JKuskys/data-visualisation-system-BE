@@ -7,6 +7,7 @@ import {
   Param,
   Body,
   UseGuards,
+  Scope,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UpdateResult, DeleteResult } from 'typeorm';
@@ -14,7 +15,7 @@ import { WidgetEntity } from '../widget.entity';
 import { WidgetService } from '../service/widget/widget.service';
 import { WidgetDto } from '../widget.dto';
 
-@Controller('api/v1/widgets')
+@Controller({ path: 'api/v1/widgets', scope: Scope.REQUEST })
 export class WidgetController {
   constructor(private widgetService: WidgetService) {}
 
