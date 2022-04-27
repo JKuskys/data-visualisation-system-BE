@@ -41,7 +41,7 @@ export class WidgetService {
     );
 
     const max: Observable<number> = this.getMaxValue(
-      widget.customMin,
+      widget.customMax,
       mappedHttpResponse,
     );
 
