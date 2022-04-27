@@ -44,7 +44,7 @@ export class WidgetEntity {
   @Column({ nullable: true })
   author: string;
 
-  @Column()
+  @Column({ nullable: true })
   widgetType: string;
 
   @Column({ nullable: true })
@@ -59,22 +59,22 @@ export class WidgetEntity {
   @Column({ nullable: true })
   customNegativeSecondaryColor: string;
 
-  @Column()
+  @Column({ nullable: true })
   markNegativeDifferently: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   showLabels: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   showPeriods: boolean;
 
   @Column({ nullable: true })
   customLegend: string;
 
-  @Column()
+  @Column({ nullable: true })
   showYGrid: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   showXGrid: boolean;
 
   // @Column()

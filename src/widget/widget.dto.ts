@@ -69,12 +69,15 @@ export class WidgetDto {
   @IsString()
   customNegativeSecondaryColor: string;
 
+  @IsOptional()
   @IsBoolean()
   markNegativeDifferently: boolean;
 
+  @IsOptional()
   @IsBoolean()
   showLabels: boolean;
 
+  @IsOptional()
   @IsBoolean()
   showPeriods: boolean;
 
@@ -82,9 +85,11 @@ export class WidgetDto {
   @IsString()
   customLegend: string;
 
+  @IsOptional()
   @IsBoolean()
   showYGrid: boolean;
 
+  @IsOptional()
   @IsBoolean()
   showXGrid: boolean;
 }
