@@ -15,39 +15,52 @@ export class WidgetService {
     private httpService: HttpService,
   ) {}
 
-  async getWidgetData(widget: WidgetDto) {
+  async getWidgetData(key: string) {
+    const widgetDataStream = this.getOne(key);
     let httpResponse: Observable<AxiosResponse>;
     let mappedHttpResponse: Observable<
       { label: string; value: number | any }[]
     >;
 
-    httpResponse = this.getHttpRequest(widget.method, widget.url);
+    httpResponse = this.getHttpRequest(
+      (await widgetDataStream).method,
+      (await widgetDataStream).url,
+    );
 
     httpResponse = httpResponse.pipe(map((data) => data.data));
 
-    httpResponse = this.mapToArray(widget.customAttribute, httpResponse);
+    httpResponse = this.mapToArray(
+      (await widgetDataStream).customAttribute,
+      httpResponse,
+    );
 
     mappedHttpResponse = this.setCustomLabelAndValue(
-      widget.customLabel,
-      widget.customValue,
+      (await widgetDataStream).customLabel,
+      (await widgetDataStream).customValue,
       httpResponse,
     );
 
     mappedHttpResponse = this.filterInvalid(mappedHttpResponse);
 
     const min: Observable<number> = this.getMinValue(
-      widget.customMin,
+      (await widgetDataStream).customMin,
       mappedHttpResponse,
     );
 
     const max: Observable<number> = this.getMaxValue(
-      widget.customMax,
+      (await widgetDataStream).customMax,
       mappedHttpResponse,
     );
 
     const errors = {};
 
-    return await this.mapResponse(mappedHttpResponse, min, max, errors, widget);
+    return await this.mapResponse(
+      mappedHttpResponse,
+      min,
+      max,
+      errors,
+      await widgetDataStream,
+    );
   }
 
   async getAllPrivate(author: string): Promise<WidgetEntity[]> {
@@ -81,7 +94,7 @@ export class WidgetService {
     min: Observable<number>,
     max: Observable<number>,
     errors: Record<string, unknown>,
-    widgetData: WidgetDto,
+    widgetData: WidgetEntity,
   ): Promise<{
     data: { value: number; label: string }[];
     min: number;

@@ -10,7 +10,6 @@ export class AuthController {
 
   @Post('signup')
   async signup(@Body() user: UserDto): Promise<Users> {
-    console.log(user);
     return this.usersService.signup(user);
   }
 

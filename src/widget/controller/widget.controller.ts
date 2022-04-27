@@ -15,20 +15,20 @@ import { WidgetEntity } from '../widget.entity';
 import { WidgetService } from '../service/widget/widget.service';
 import { WidgetDto } from '../widget.dto';
 
-@Controller({ path: 'api/v1/widgets', scope: Scope.REQUEST })
+@Controller({ path: 'api/v1/widgets', scope: Scope.DEFAULT })
 export class WidgetController {
   constructor(private widgetService: WidgetService) {}
 
-  @Post('/data')
-  async GetWidgetData(@Body() widget: WidgetDto) {
-    return await this.widgetService.getWidgetData(widget);
+  @Get('/data/:key')
+  async GetWidgetData(@Param() key: { key: string }) {
+    return await this.widgetService.getWidgetData(key.key);
   }
 
   @Get('/test1')
   async GetTest1(): Promise<any[]> {
     return await Promise.resolve([
       { label: 'label1', value: 20 },
-      { label: 'label2', value: 45 },
+      { label: 'label2', value: 70 },
       { label: 'label3', value: 60 },
     ]);
   }
@@ -37,7 +37,7 @@ export class WidgetController {
   async PostTest1(): Promise<any[]> {
     return await Promise.resolve([
       { label: 'postLabel1', value: 20 },
-      { label: 'postLabel2', value: 45 },
+      { label: 'postLabel2', value: 180 },
       { label: 'postLabel3', value: 60 },
     ]);
   }
@@ -87,7 +87,6 @@ export class WidgetController {
 
   @Get(':key')
   async GetOne(@Param() key: { key: string }): Promise<WidgetEntity> {
-    console.log(key);
     return await this.widgetService.getOne(key.key);
   }
 

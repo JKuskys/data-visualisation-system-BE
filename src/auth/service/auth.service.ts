@@ -15,7 +15,6 @@ export class AuthService {
 
   async signup(user: UserDto): Promise<Users> {
     const salt = await bcrypt.genSalt();
-    console.log(user.password);
     const hash = await bcrypt.hash(user.password, salt);
     user.password = hash;
     return await this.userRepository.save(user);
