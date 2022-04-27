@@ -115,13 +115,13 @@ export class WidgetService {
     customMax: number,
     httpResponse: Observable<{ label: string; value: number }[]>,
   ): Observable<number> {
-    return httpResponse.pipe(
+    return httpResponse?.pipe(
       map((data: { label: string; value: number }[]) => {
         if (customMax) {
           return customMax;
         }
 
-        let max = data[0].value;
+        let max = data[0]?.value;
 
         data.forEach((d) => (max = d.value > max ? d.value : max));
 
@@ -134,7 +134,7 @@ export class WidgetService {
     customMin: number,
     httpResponse: Observable<{ label: string; value: number }[]>,
   ): Observable<number> {
-    return httpResponse.pipe(
+    return httpResponse?.pipe(
       map((data: { label: string; value: number }[]) => {
         if (customMin) {
           return customMin;
@@ -152,7 +152,7 @@ export class WidgetService {
   private filterInvalid(
     httpResponse: Observable<{ label: string; value: number | any }[]>,
   ): Observable<{ label: string; value: number }[]> {
-    return httpResponse.pipe(
+    return httpResponse?.pipe(
       map((data: { label: string; value: any }[]) =>
         data.filter((d) => typeof d.value === 'number' && !!d.label),
       ),
@@ -164,7 +164,7 @@ export class WidgetService {
     customValue: string,
     httpResponse: Observable<AxiosResponse>,
   ): Observable<{ label: string; value: any }[]> {
-    return httpResponse.pipe(
+    return httpResponse?.pipe(
       map((data) =>
         (data as unknown as { label: string; value: any }[]).map((object) => ({
           label: object[customLabel] ?? object['label'],
@@ -178,20 +178,19 @@ export class WidgetService {
     customAttribute: string,
     httpResponse: Observable<AxiosResponse>,
   ): Observable<AxiosResponse> {
-    if (customAttribute) {
-      return httpResponse.pipe(
-        map((dataObject) => {
-          const properties = customAttribute.split('.');
-          let dataArray = dataObject;
+    return httpResponse.pipe(
+      map((dataObject) => {
+        const properties = customAttribute ? customAttribute?.split('.') : [];
+        let dataArray = dataObject;
 
+        if (properties.length > 0) {
           properties.forEach((property: string) => {
             dataArray = dataArray[property];
           });
-
-          return dataArray;
-        }),
-      );
-    }
+        }
+        return dataArray;
+      }),
+    );
   }
 
   private getHttpRequest(
