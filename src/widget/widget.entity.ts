@@ -77,6 +77,15 @@ export class WidgetEntity {
   @Column({ nullable: true })
   showXGrid: boolean;
 
+  @Column({ nullable: true })
+  markFirst: boolean;
+
+  @Column({ nullable: true })
+  markLast: boolean;
+
+  @Column({ nullable: true })
+  maxItems: number;
+
   // @Column()
   // headers: { [key: string]: string }[];
 

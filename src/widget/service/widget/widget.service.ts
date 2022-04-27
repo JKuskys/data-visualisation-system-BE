@@ -91,7 +91,9 @@ export class WidgetService {
     return lastValueFrom(
       combineLatest([httpResponse, min, max]).pipe(
         map(([data, min, max]) => ({
-          data,
+          data: (widgetData.takeFromStart ? data : data.reverse()).filter(
+            (_, index) => !widgetData.maxItems || index < widgetData.maxItems,
+          ),
           min,
           max,
           errors,
@@ -136,7 +138,7 @@ export class WidgetService {
   ): Observable<number> {
     return httpResponse?.pipe(
       map((data: { label: string; value: number }[]) => {
-        if (customMin) {
+        if (typeof customMin === 'number') {
           return customMin;
         }
 

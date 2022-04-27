@@ -92,4 +92,16 @@ export class WidgetDto {
   @IsOptional()
   @IsBoolean()
   showXGrid: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  markFirst: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  markLast: boolean;
+
+  @IsOptional()
+  @IsNumber()
+  maxItems: number;
 }
