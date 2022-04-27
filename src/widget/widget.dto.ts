@@ -104,4 +104,8 @@ export class WidgetDto {
   @IsOptional()
   @IsNumber()
   maxItems: number;
+
+  @IsOptional()
+  @IsString()
+  title: string;
 }

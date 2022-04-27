@@ -110,6 +110,7 @@ export class WidgetService {
           showXGrid: widgetData.showXGrid,
           markFirst: widgetData.markFirst,
           markLast: widgetData.markLast,
+          title: widgetData.title,
         })),
       ),
     );

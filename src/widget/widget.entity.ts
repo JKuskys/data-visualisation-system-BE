@@ -86,6 +86,9 @@ export class WidgetEntity {
   @Column({ nullable: true })
   maxItems: number;
 
+  @Column({ nullable: true })
+  title: string;
+
   // @Column()
   // headers: { [key: string]: string }[];
 
