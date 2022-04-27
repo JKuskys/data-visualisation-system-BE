@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class WidgetDto {
   @IsString()
@@ -42,4 +48,37 @@ export class WidgetDto {
   @IsString()
   @IsNotEmpty()
   author: string;
+
+  @IsOptional()
+  @IsString()
+  widgetType: string;
+
+  @IsOptional()
+  @IsString()
+  customPrimaryColor: string;
+
+  @IsOptional()
+  @IsString()
+  customSecondaryColor: string;
+
+  @IsOptional()
+  @IsString()
+  customNegativePrimaryColor: string;
+
+  @IsOptional()
+  @IsString()
+  customNegativeSecondaryColor: string;
+
+  @IsBoolean()
+  markNegativeDifferently: boolean;
+
+  @IsOptional()
+  @IsString()
+  customLegend: string;
+
+  @IsBoolean()
+  showYGrid: boolean;
+
+  @IsBoolean()
+  showXGrid: boolean;
 }

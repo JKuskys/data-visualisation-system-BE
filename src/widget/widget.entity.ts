@@ -44,6 +44,33 @@ export class WidgetEntity {
   @Column({ nullable: true })
   author: string;
 
+  @Column()
+  widgetType: string;
+
+  @Column({ nullable: true })
+  customPrimaryColor: string;
+
+  @Column({ nullable: true })
+  customSecondaryColor: string;
+
+  @Column({ nullable: true })
+  customNegativePrimaryColor: string;
+
+  @Column({ nullable: true })
+  customNegativeSecondaryColor: string;
+
+  @Column()
+  markNegativeDifferently: boolean;
+
+  @Column({ nullable: true })
+  customLegend: string;
+
+  @Column()
+  showYGrid: boolean;
+
+  @Column()
+  showXGrid: boolean;
+
   // @Column()
   // headers: { [key: string]: string }[];
 
