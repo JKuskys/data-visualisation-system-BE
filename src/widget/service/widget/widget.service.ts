@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Scope } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { Repository, UpdateResult, DeleteResult } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -7,7 +7,7 @@ import { AxiosResponse } from 'axios';
 import { combineLatest, lastValueFrom, map, Observable } from 'rxjs';
 import { WidgetDto } from 'src/widget/widget.dto';
 
-@Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class WidgetService {
   constructor(
     @InjectRepository(WidgetEntity)
