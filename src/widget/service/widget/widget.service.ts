@@ -47,7 +47,7 @@ export class WidgetService {
 
     const errors = {};
 
-    return await this.mapResponse(mappedHttpResponse, min, max, errors);
+    return await this.mapResponse(mappedHttpResponse, min, max, errors, widget);
   }
 
   async getAllPrivate(author: string): Promise<WidgetEntity[]> {
@@ -81,6 +81,7 @@ export class WidgetService {
     min: Observable<number>,
     max: Observable<number>,
     errors: Record<string, unknown>,
+    widgetData: WidgetDto,
   ): Promise<{
     data: { value: number; label: string }[];
     min: number;
@@ -94,6 +95,17 @@ export class WidgetService {
           min,
           max,
           errors,
+          widgetType: widgetData.widgetType,
+          customPrimaryColor: widgetData.customPrimaryColor,
+          customSecondaryColor: widgetData.customSecondaryColor,
+          customNegativePrimaryColor: widgetData.customNegativePrimaryColor,
+          customNegativeSecondaryColor: widgetData.customNegativeSecondaryColor,
+          markNegativeDifferently: widgetData.markNegativeDifferently,
+          showLabels: widgetData.showLabels,
+          showPeriods: widgetData.showPeriods,
+          customLegend: widgetData.customLegend,
+          showYGrid: widgetData.showYGrid,
+          showXGrid: widgetData.showXGrid,
         })),
       ),
     );

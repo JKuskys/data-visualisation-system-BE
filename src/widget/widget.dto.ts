@@ -72,6 +72,12 @@ export class WidgetDto {
   @IsBoolean()
   markNegativeDifferently: boolean;
 
+  @IsBoolean()
+  showLabels: boolean;
+
+  @IsBoolean()
+  showPeriods: boolean;
+
   @IsOptional()
   @IsString()
   customLegend: string;

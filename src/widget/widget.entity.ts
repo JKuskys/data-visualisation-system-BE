@@ -62,6 +62,12 @@ export class WidgetEntity {
   @Column()
   markNegativeDifferently: boolean;
 
+  @Column()
+  showLabels: boolean;
+
+  @Column()
+  showPeriods: boolean;
+
   @Column({ nullable: true })
   customLegend: string;
 
