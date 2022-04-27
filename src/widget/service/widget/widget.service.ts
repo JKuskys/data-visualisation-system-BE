@@ -108,6 +108,8 @@ export class WidgetService {
           customLegend: widgetData.customLegend,
           showYGrid: widgetData.showYGrid,
           showXGrid: widgetData.showXGrid,
+          markFirst: widgetData.markFirst,
+          markLast: widgetData.markLast,
         })),
       ),
     );
