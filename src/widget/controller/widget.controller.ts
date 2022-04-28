@@ -29,7 +29,12 @@ export class WidgetController {
     return await Promise.resolve([
       { label: 'label1', value: 20 },
       { label: 'label2', value: 70 },
-      { label: 'label3', value: 60 },
+      { label: 'label3', value: -200 },
+      { label: 'label4', value: 60 },
+      { label: 'label5', value: -150 },
+      { label: 'label6', value: 80 },
+      { label: 'label7', value: 150 },
+      { label: 'label8', value: 260 },
     ]);
   }
 
@@ -39,6 +44,11 @@ export class WidgetController {
       { label: 'postLabel1', value: 20 },
       { label: 'postLabel2', value: 180 },
       { label: 'postLabel3', value: 60 },
+      { label: 'postLabel4', value: -200 },
+      { label: 'postLabel5', value: -150 },
+      { label: 'postLabel6', value: 80 },
+      { label: 'postLabel7', value: 150 },
+      { label: 'postLabel8', value: -260 },
     ]);
   }
 
@@ -48,8 +58,11 @@ export class WidgetController {
       data: {
         data: [
           { label: 'label1', value: 20 },
-          { label: 'label2', value: '45' },
-          { label: 'label3', value: 60 },
+          { label: 'label2', value: 45 },
+          { label: 'label3', value: -200 },
+          { label: 'label4', value: 60 },
+          { label: 'label5', value: 150 },
+          { label: 'label6', value: -50 },
         ],
       },
     });

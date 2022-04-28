@@ -68,7 +68,7 @@ export class WidgetService {
   }
 
   async getAll(): Promise<WidgetEntity[]> {
-    return await this.widgetRepository.find();
+    return await this.widgetRepository.findBy({ isPublic: true });
   }
 
   async create(widget: WidgetDto): Promise<WidgetEntity> {
