@@ -76,8 +76,8 @@ export class WidgetController {
   }
 
   @Get()
-  async GetAll(): Promise<WidgetEntity[]> {
-    return await this.widgetService.getAll();
+  async GetAll(): Promise<string[]> {
+    return (await this.widgetService.getAll()).map((data) => data.key);
   }
 
   @Post()
