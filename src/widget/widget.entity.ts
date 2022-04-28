@@ -86,7 +86,7 @@ export class WidgetEntity {
   @Column({ nullable: true })
   maxItems: number;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   title: string;
 
   // @Column()
